@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UploadFile</title>
+    <style>
+      #form {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <input type="file" id="file" accept=".jpg" multiple />
+      <input type="text" id="comments" placeholder="File Comments" />
+      <button type="submit">Upload</button>
+    </form>
+    <script>
+      let form = document.getElementById("form");
+      let comments = document.getElementById("comments");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const files = document.getElementById("file").files[0];
+        const formData = new FormData();
+
+        formData.append("user-file", files, "user-file.jpg");
+        formData.append("user-comments", comments);
+      });
+    </script>
+  </body>
+</html>
